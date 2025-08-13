@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null">
+ <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Error_Panel_mpc">
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl0" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO1" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO1</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter1</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK1" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK1</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter1</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC1" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC1</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter1</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC1" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC1</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter1</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;1</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">10, 20</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_ACCObjInfo0</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO2" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO2</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter2</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK2" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK2</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter2</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC2" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC2</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter2</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC2" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC2</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter2</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;2</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl1</Property>
+  <Property Name="Location">250, 20</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_DOPTraj</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO3" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO3</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter3" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter3</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK3" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK3</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter3" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter3</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC3" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC3</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter3" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter3</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC3" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC3</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter3" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter3</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;3</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl2</Property>
+  <Property Name="Location">490, 20</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_Fct</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO4" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO4</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter4" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter4</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK4" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK4</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter4" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter4</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC4" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC4</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter4" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter4</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC4" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC4</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter4" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter4</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;4</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl3</Property>
+  <Property Name="Location">730, 20</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_OnComingObj0</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl4" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO5" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO5</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter5" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter5</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK5" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK5</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter5" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter5</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC5" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC5</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter5" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter5</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC5" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC5</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter5" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter5</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;5</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl4</Property>
+  <Property Name="Location">10, 80</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_OnComingObj1</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl5" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO6" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO6</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter6" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter6</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK6" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK6</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter6" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter6</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC6" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC6</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter6" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter6</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC6" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC6</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter6" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter6</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;6</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl5</Property>
+  <Property Name="Location">250, 80</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_OnGoingObj0</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl6" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO7" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO7</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter7" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter7</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK7" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK7</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter7" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter7</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC7" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC7</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter7" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter7</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC7" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC7</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter7" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter7</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;7</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl6</Property>
+  <Property Name="Location">490, 80</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_OnGoingObj1</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl7" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlTO8" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlTO8</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">10, 15</Property>
+      <Property Name="Text">TO</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOError;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlTOCounter8" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlTOCounter8</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">10, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_TOErrorCounter;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlCHK8" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlCHK8</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">60, 15</Property>
+      <Property Name="Text">CHK</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CRC_CHKError;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlCHKCounter8" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlCHKCounter8</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">60, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_CHKErrorCounter;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlMC8" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlMC8</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">110, 15</Property>
+      <Property Name="Text">MC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCError;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlMCCounter8" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlMCCounter8</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">110, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_MCErrorCounter;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlDLC8" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControlDLC8</Property>
+      <Property Name="Size">50, 20</Property>
+      <Property Name="Location">160, 15</Property>
+      <Property Name="Text">DLC</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCError;1;;;8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControlDLCCounter8" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControlDLCCounter8</Property>
+      <Property Name="Size">20, 20</Property>
+      <Property Name="Location">160, 35</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="DescriptionSize">20, 20</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="SymbolConfiguration">4;16;Error_panel_mpc;;;i_DLCErrorCounter;1;;;8</Property>
+    </Object>
+  <Property Name="Name">GroupBoxControl7</Property>
+  <Property Name="Location">730, 80</Property>
+  <Property Name="Size">230, 60</Property>
+  <Property Name="Text">RFC_TIPLBoundary</Property>
+  </Object>
+  <Property Name="Text">Error_Panel_mpc</Property>
+  <Property Name="Size">1020, 160</Property>
+ </Object>
+</Panel>

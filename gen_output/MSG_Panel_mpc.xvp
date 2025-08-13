@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null">
+ <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="MainPanel">
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCACCObjInfo0" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCACCObjInfo0</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="PanelList">1;1;RFC_ACCObjInfo0.xvp</Property>
+    <Property Name="Text">RFC_ACCObjInfo0</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCDOPTraj" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCDOPTraj</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">158, 20</Property>
+    <Property Name="PanelList">1;1;RFC_DOPTraj.xvp</Property>
+    <Property Name="Text">RFC_DOPTraj</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCFct" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCFct</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">296, 20</Property>
+    <Property Name="PanelList">1;1;RFC_Fct.xvp</Property>
+    <Property Name="Text">RFC_Fct</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCOnComingObj0" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCOnComingObj0</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">434, 20</Property>
+    <Property Name="PanelList">1;1;RFC_OnComingObj0.xvp</Property>
+    <Property Name="Text">RFC_OnComingObj0</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCOnComingObj1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCOnComingObj1</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">572, 20</Property>
+    <Property Name="PanelList">1;1;RFC_OnComingObj1.xvp</Property>
+    <Property Name="Text">RFC_OnComingObj1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCOnGoingObj0" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCOnGoingObj0</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">710, 20</Property>
+    <Property Name="PanelList">1;1;RFC_OnGoingObj0.xvp</Property>
+    <Property Name="Text">RFC_OnGoingObj0</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCOnGoingObj1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCOnGoingObj1</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">848, 20</Property>
+    <Property Name="PanelList">1;1;RFC_OnGoingObj1.xvp</Property>
+    <Property Name="Text">RFC_OnGoingObj1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRFCTIPLBoundary" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRFCTIPLBoundary</Property>
+    <Property Name="Size">128, 25</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="PanelList">1;1;RFC_TIPLBoundary.xvp</Property>
+    <Property Name="Text">RFC_TIPLBoundary</Property>
+   </Object>
+  <Property Name="Text">MainPanel</Property>
+  <Property Name="Size">986, 90</Property>
+ </Object>
+</Panel>
