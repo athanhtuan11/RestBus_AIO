@@ -1,0 +1,563 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null">
+ <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ABS_ESP_4">
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl0" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl0" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl0</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAactive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl0" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl0</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAactive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl0" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl0</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAactive_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR0" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR0</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAactive_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS0" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS0</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAactive_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">20, 20</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">ABAactive</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl1" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl1</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAavailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl1" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl1</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAavailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl1</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAavailable_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR1" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR1</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAavailable_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS1" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS1</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ABAavailable_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">280, 20</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">ABAavailable</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl2" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl2</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBactive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl2" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl2</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBactive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl2</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBactive_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR2" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR2</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBactive_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS2" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS2</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBactive_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">540, 20</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">AWBactive</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl3" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl3</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBavailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl3" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl3</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBavailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl3</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBavailable_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR3" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR3</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBavailable_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS3" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS3</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_AWBavailable_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">800, 20</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">AWBavailable</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl4" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl4" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl4</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDActive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl4" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl4</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDActive;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl4</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDActive_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR4" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR4</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDActive_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS4" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS4</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDActive_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">20, 150</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">CDDActive</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl5" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl5" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl5</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDAvailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl5" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl5</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDAvailable;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl5" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl5</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDAvailable_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR5" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR5</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDAvailable_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS5" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS5</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_CDDAvailable_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">280, 150</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">CDDAvailable</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl6" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl6" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl6</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_DCFail;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl6" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl6</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_DCFail;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl6" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl6</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_DCFail_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR6" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR6</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_DCFail_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS6" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS6</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_DCFail_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">540, 150</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">DCFail</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl7" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl7" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl7</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ECDTempOff;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl7" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl7</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ECDTempOff;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl7" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl7</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ECDTempOff_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR7" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR7</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ECDTempOff_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS7" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS7</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_ECDTempOff_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">800, 150</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">ECDTempOff</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl8" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl8" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl8</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Active;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl8" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl8</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Active;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl8" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl8</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Active_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR8" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR8</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Active_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS8" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS8</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Active_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">20, 280</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">VLC_Active</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl9" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl9" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl9</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Available;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl9" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl9</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Available;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl9" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl9</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Available_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR9" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR9</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Available_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS9" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS9</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_Available_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">280, 280</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">VLC_Available</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl10" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl10" Children="Controls" ControlName="Track Bar">
+    <Property Name="Name">TrackBarControl10</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SmallChangeDouble">0.1</Property>
+    <Property Name="MaximumDouble">5.75</Property>
+    <Property Name="MinimumDouble">-7</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_InternalTargetAcceleration;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl10" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl10</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Double</Property>
+    <Property Name="ValueDecimalPlaces">1</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_InternalTargetAcceleration;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl10" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl10</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_InternalTargetAcceleration_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR10" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR10</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_InternalTargetAcceleration_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS10" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS10</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VLC_InternalTargetAcceleration_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">540, 280</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">VLC_InternalTargetAcceleration</Property>
+  </Object>
+  <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl11" Children="Controls" ControlName="Group Box">
+   <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl11" Children="Controls" ControlName="Combo Box">
+    <Property Name="Name">ComboBoxControl11</Property>
+    <Property Name="Size">200, 30</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VehicleStandstill;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxPhysControl11" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxPhysControl11</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="ValueDisplay">Decimal</Property>
+    <Property Name="DescriptionText">Phys</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VehicleStandstill;2;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl11" Children="Controls" ControlName="Input/Output Box">
+    <Property Name="Name">TextBoxControl11</Property>
+    <Property Name="Size">150, 20</Property>
+    <Property Name="Location">20, 80</Property>
+    <Property Name="ValueDisplay">Hexadecimal</Property>
+    <Property Name="DescriptionText">Hex</Property>
+    <Property Name="DescriptionSize">50, 20</Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VehicleStandstill_Raw;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlR11" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlR11</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 80</Property>
+    <Property Name="Text">RAW</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VehicleStandstill_EN;1;;;-1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControlS11" Children="Controls" ControlName="Check Box">
+    <Property Name="Name">CheckBoxControlS11</Property>
+    <Property Name="Size">55, 20</Property>
+    <Property Name="Location">180, 55</Property>
+    <Property Name="Text">SIM</Property>
+    <Property Name="DescriptionText"></Property>
+    <Property Name="SymbolConfiguration">4;16;Vehicle_Signals;;;i_VehicleStandstill_SIM;1;;;-1</Property>
+   </Object>
+  <Property Name="Name">GroupBoxControl0</Property>
+  <Property Name="Location">800, 280</Property>
+  <Property Name="Size">240, 125</Property>
+  <Property Name="Text">VehicleStandstill</Property>
+  </Object>
+  <Property Name="Text">ABS_ESP_4</Property>
+  <Property Name="Size">1060, 410</Property>
+ </Object>
+</Panel>

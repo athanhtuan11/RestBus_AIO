@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null">
+ <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="">
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESP1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESP1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_1.xvp</Property>
+    <Property Name="Text">ABS_ESP_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESP3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESP3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_3.xvp</Property>
+    <Property Name="Text">ABS_ESP_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESP4" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESP4</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_4.xvp</Property>
+    <Property Name="Text">ABS_ESP_4</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESP7" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESP7</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_7.xvp</Property>
+    <Property Name="Text">ABS_ESP_7</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESP8" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESP8</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_8.xvp</Property>
+    <Property Name="Text">ABS_ESP_8</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlABSESPG" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlABSESPG</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 20</Property>
+    <Property Name="PanelList">1;1;ABS_ESP_G.xvp</Property>
+    <Property Name="Text">ABS_ESP_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlBCM1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlBCM1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 20</Property>
+    <Property Name="PanelList">1;1;BCM_1.xvp</Property>
+    <Property Name="Text">BCM_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlBCM9" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlBCM9</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">706, 20</Property>
+    <Property Name="PanelList">1;1;BCM_9.xvp</Property>
+    <Property Name="Text">BCM_9</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlCLM2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlCLM2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">804, 20</Property>
+    <Property Name="PanelList">1;1;CLM_2.xvp</Property>
+    <Property Name="Text">CLM_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlDMS1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlDMS1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">902, 20</Property>
+    <Property Name="PanelList">1;1;DMS_1.xvp</Property>
+    <Property Name="Text">DMS_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEMS1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEMS1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">1000, 20</Property>
+    <Property Name="PanelList">1;1;EMS_1.xvp</Property>
+    <Property Name="Text">EMS_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEMS2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEMS2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 55</Property>
+    <Property Name="PanelList">1;1;EMS_2.xvp</Property>
+    <Property Name="Text">EMS_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEMS2G" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEMS2G</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 55</Property>
+    <Property Name="PanelList">1;1;EMS_2_G.xvp</Property>
+    <Property Name="Text">EMS_2_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEMS3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEMS3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 55</Property>
+    <Property Name="PanelList">1;1;EMS_3.xvp</Property>
+    <Property Name="Text">EMS_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEMS6" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEMS6</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 55</Property>
+    <Property Name="PanelList">1;1;EMS_6.xvp</Property>
+    <Property Name="Text">EMS_6</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPBG" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPBG</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 55</Property>
+    <Property Name="PanelList">1;1;EPB_G.xvp</Property>
+    <Property Name="Text">EPB_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPBStateR" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPBStateR</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 55</Property>
+    <Property Name="PanelList">1;1;EPB_State_R.xvp</Property>
+    <Property Name="Text">EPB_State_R</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPS1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPS1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 55</Property>
+    <Property Name="PanelList">1;1;EPS_1.xvp</Property>
+    <Property Name="Text">EPS_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPS2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPS2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">706, 55</Property>
+    <Property Name="PanelList">1;1;EPS_2.xvp</Property>
+    <Property Name="Text">EPS_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPS3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPS3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">804, 55</Property>
+    <Property Name="PanelList">1;1;EPS_3.xvp</Property>
+    <Property Name="Text">EPS_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlEPS4" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlEPS4</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">902, 55</Property>
+    <Property Name="PanelList">1;1;EPS_4.xvp</Property>
+    <Property Name="Text">EPS_4</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlHCU17" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlHCU17</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">1000, 55</Property>
+    <Property Name="PanelList">1;1;HCU_17.xvp</Property>
+    <Property Name="Text">HCU_17</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlHCU1G" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlHCU1G</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 90</Property>
+    <Property Name="PanelList">1;1;HCU_1_G.xvp</Property>
+    <Property Name="Text">HCU_1_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlHCU3G" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlHCU3G</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 90</Property>
+    <Property Name="PanelList">1;1;HCU_3_G.xvp</Property>
+    <Property Name="Text">HCU_3_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlHCU6" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlHCU6</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 90</Property>
+    <Property Name="PanelList">1;1;HCU_6.xvp</Property>
+    <Property Name="Text">HCU_6</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlICM1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlICM1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 90</Property>
+    <Property Name="PanelList">1;1;ICM_1.xvp</Property>
+    <Property Name="Text">ICM_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlICM2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlICM2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 90</Property>
+    <Property Name="PanelList">1;1;ICM_2.xvp</Property>
+    <Property Name="Text">ICM_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlICM3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlICM3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 90</Property>
+    <Property Name="PanelList">1;1;ICM_3.xvp</Property>
+    <Property Name="Text">ICM_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlICM5" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlICM5</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 90</Property>
+    <Property Name="PanelList">1;1;ICM_5.xvp</Property>
+    <Property Name="Text">ICM_5</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU10" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU10</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">706, 90</Property>
+    <Property Name="PanelList">1;1;IHU_10.xvp</Property>
+    <Property Name="Text">IHU_10</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU11" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU11</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">804, 90</Property>
+    <Property Name="PanelList">1;1;IHU_11.xvp</Property>
+    <Property Name="Text">IHU_11</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU29" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU29</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">902, 90</Property>
+    <Property Name="PanelList">1;1;IHU_29.xvp</Property>
+    <Property Name="Text">IHU_29</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU30" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU30</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">1000, 90</Property>
+    <Property Name="PanelList">1;1;IHU_30.xvp</Property>
+    <Property Name="Text">IHU_30</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU31" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU31</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 125</Property>
+    <Property Name="PanelList">1;1;IHU_31.xvp</Property>
+    <Property Name="Text">IHU_31</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU34" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU34</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 125</Property>
+    <Property Name="PanelList">1;1;IHU_34.xvp</Property>
+    <Property Name="Text">IHU_34</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU35" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU35</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 125</Property>
+    <Property Name="PanelList">1;1;IHU_35.xvp</Property>
+    <Property Name="Text">IHU_35</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIHU40" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIHU40</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 125</Property>
+    <Property Name="PanelList">1;1;IHU_40.xvp</Property>
+    <Property Name="Text">IHU_40</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlIPB11" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlIPB11</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 125</Property>
+    <Property Name="PanelList">1;1;IPB_11.xvp</Property>
+    <Property Name="Text">IPB_11</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlMFS2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlMFS2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 125</Property>
+    <Property Name="PanelList">1;1;MFS_2.xvp</Property>
+    <Property Name="Text">MFS_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 125</Property>
+    <Property Name="PanelList">1;1;RLCR_1.xvp</Property>
+    <Property Name="Text">RLCR_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">706, 125</Property>
+    <Property Name="PanelList">1;1;RLCR_3.xvp</Property>
+    <Property Name="Text">RLCR_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR4" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR4</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">804, 125</Property>
+    <Property Name="PanelList">1;1;RLCR_4.xvp</Property>
+    <Property Name="Text">RLCR_4</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR5" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR5</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">902, 125</Property>
+    <Property Name="PanelList">1;1;RLCR_5.xvp</Property>
+    <Property Name="Text">RLCR_5</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR6" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR6</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">1000, 125</Property>
+    <Property Name="PanelList">1;1;RLCR_6.xvp</Property>
+    <Property Name="Text">RLCR_6</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR7" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR7</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 160</Property>
+    <Property Name="PanelList">1;1;RLCR_7.xvp</Property>
+    <Property Name="Text">RLCR_7</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR8" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR8</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 160</Property>
+    <Property Name="PanelList">1;1;RLCR_8.xvp</Property>
+    <Property Name="Text">RLCR_8</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRLCR9" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRLCR9</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 160</Property>
+    <Property Name="PanelList">1;1;RLCR_9.xvp</Property>
+    <Property Name="Text">RLCR_9</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_1.xvp</Property>
+    <Property Name="Text">RRCR_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_2.xvp</Property>
+    <Property Name="Text">RRCR_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR3" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR3</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_3.xvp</Property>
+    <Property Name="Text">RRCR_3</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR4" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR4</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_4.xvp</Property>
+    <Property Name="Text">RRCR_4</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR5" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR5</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">706, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_5.xvp</Property>
+    <Property Name="Text">RRCR_5</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR6" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR6</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">804, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_6.xvp</Property>
+    <Property Name="Text">RRCR_6</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR7" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR7</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">902, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_7.xvp</Property>
+    <Property Name="Text">RRCR_7</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlRRCR8" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlRRCR8</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">1000, 160</Property>
+    <Property Name="PanelList">1;1;RRCR_8.xvp</Property>
+    <Property Name="Text">RRCR_8</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlSAM1G" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlSAM1G</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">20, 195</Property>
+    <Property Name="PanelList">1;1;SAM_1_G.xvp</Property>
+    <Property Name="Text">SAM_1_G</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlTCU2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlTCU2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">118, 195</Property>
+    <Property Name="PanelList">1;1;TCU_2.xvp</Property>
+    <Property Name="Text">TCU_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlTCU4" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlTCU4</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">216, 195</Property>
+    <Property Name="PanelList">1;1;TCU_4.xvp</Property>
+    <Property Name="Text">TCU_4</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlVCU2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlVCU2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">314, 195</Property>
+    <Property Name="PanelList">1;1;VCU_2.xvp</Property>
+    <Property Name="Text">VCU_2</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlVCU6" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlVCU6</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">412, 195</Property>
+    <Property Name="PanelList">1;1;VCU_6.xvp</Property>
+    <Property Name="Text">VCU_6</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlYAS1" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlYAS1</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">510, 195</Property>
+    <Property Name="PanelList">1;1;YAS_1.xvp</Property>
+    <Property Name="Text">YAS_1</Property>
+   </Object>
+   <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.0.35.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControlYAS2" Children="Controls" ControlName="Panel Control Button">
+    <Property Name="Name">PanelButtonControlYAS2</Property>
+    <Property Name="Size">88, 25</Property>
+    <Property Name="Location">608, 195</Property>
+    <Property Name="PanelList">1;1;YAS_2.xvp</Property>
+    <Property Name="Text">YAS_2</Property>
+   </Object>
+  <Property Name="Text"></Property>
+  <Property Name="Size">1098, 265</Property>
+ </Object>
+</Panel>

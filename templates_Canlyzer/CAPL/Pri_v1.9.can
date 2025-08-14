@@ -1,0 +1,3404 @@
+/*@!Encoding:1252*/
+includes
+{
+
+}
+
+variables
+{
+
+	//-----------------GEN: Define MSG Start----------------------
+
+	message can2.RFC_ACCObjInfo0	RFC_ACCObjInfo0 = {DIR = TX};
+	message can2.RFC_DOPTraj	RFC_DOPTraj = {DIR = TX};
+	message can2.RFC_Fct	RFC_Fct = {DIR = TX};
+	message can2.RFC_OnComingObj0	RFC_OnComingObj0 = {DIR = TX};
+	message can2.RFC_OnComingObj1	RFC_OnComingObj1 = {DIR = TX};
+	message can2.RFC_OnGoingObj0	RFC_OnGoingObj0 = {DIR = TX};
+	message can2.RFC_OnGoingObj1	RFC_OnGoingObj1 = {DIR = TX};
+	message can2.RFC_TIPLBoundary	RFC_TIPLBoundary = {DIR = TX};
+
+	//-----------------GEN: Define MSG End------------------------
+
+
+	//----------------GEN: MSG ID End-------------------
+
+	// Generate MSG TX CONFIG
+	enum MSG_CONFIG_TX_ENUM {
+	/* 0 */ MSG_CONFIG_TX_ENUM_START = 0,
+	/* 1 */	MSG_CONFIG_TX_RFC_ACCObjInfo0,
+	/* 2 */	MSG_CONFIG_TX_RFC_DOPTraj,
+	/* 3 */	MSG_CONFIG_TX_RFC_Fct,
+	/* 4 */	MSG_CONFIG_TX_RFC_OnComingObj0,
+	/* 5 */	MSG_CONFIG_TX_RFC_OnComingObj1,
+	/* 6 */	MSG_CONFIG_TX_RFC_OnGoingObj0,
+	/* 7 */	MSG_CONFIG_TX_RFC_OnGoingObj1,
+	/* 8 */	MSG_CONFIG_TX_RFC_TIPLBoundary,
+	/* 9 */	MSG_CONFIG_TX_ENUM_TX_END 
+	};
+
+	//----------------GEN: MSG ID End-------------------
+
+
+	//----------------GEN: Define Timer Start-------------------
+
+	msTimer PROJ_SendMSGTimer_20ms;
+	msTimer PROJ_SendMSGTimer_50ms;
+	msTimer PROJ_SendMSGTimer_FR;
+
+	//----------------GEN: Define Timer End-------------------
+
+
+	//----------------GEN: E2E CFG Start-------------------
+
+
+  byte g_FR_Line_Block_Counter;
+  byte g_FR_Object_Block_Counter;
+
+  byte g_FR_Block_Timer_Stage;
+
+  
+  word CRC_16_H1021_Tbl[256] =
+  {
+      /*  0:*/ 0x0000 , 0x1021 , 0x2042 , 0x3063 , 0x4084 , 0x50a5 , 0x60c6 , 0x70e7 ,
+      /*  8:*/ 0x8108 , 0x9129 , 0xa14a , 0xb16b , 0xc18c , 0xd1ad , 0xe1ce , 0xf1ef ,
+      /* 16:*/ 0x1231 , 0x0210 , 0x3273 , 0x2252 , 0x52b5 , 0x4294 , 0x72f7 , 0x62d6 ,
+      /* 24:*/ 0x9339 , 0x8318 , 0xb37b , 0xa35a , 0xd3bd , 0xc39c , 0xf3ff , 0xe3de ,
+      /* 32:*/ 0x2462 , 0x3443 , 0x0420 , 0x1401 , 0x64e6 , 0x74c7 , 0x44a4 , 0x5485 ,
+      /* 40:*/ 0xa56a , 0xb54b , 0x8528 , 0x9509 , 0xe5ee , 0xf5cf , 0xc5ac , 0xd58d ,
+      /* 48:*/ 0x3653 , 0x2672 , 0x1611 , 0x0630 , 0x76d7 , 0x66f6 , 0x5695 , 0x46b4 ,
+      /* 56:*/ 0xb75b , 0xa77a , 0x9719 , 0x8738 , 0xf7df , 0xe7fe , 0xd79d , 0xc7bc ,
+      /* 64:*/ 0x48c4 , 0x58e5 , 0x6886 , 0x78a7 , 0x0840 , 0x1861 , 0x2802 , 0x3823 ,
+      /* 72:*/ 0xc9cc , 0xd9ed , 0xe98e , 0xf9af , 0x8948 , 0x9969 , 0xa90a , 0xb92b ,
+      /* 80:*/ 0x5af5 , 0x4ad4 , 0x7ab7 , 0x6a96 , 0x1a71 , 0x0a50 , 0x3a33 , 0x2a12 ,
+      /* 88:*/ 0xdbfd , 0xcbdc , 0xfbbf , 0xeb9e , 0x9b79 , 0x8b58 , 0xbb3b , 0xab1a ,
+      /* 96:*/ 0x6ca6 , 0x7c87 , 0x4ce4 , 0x5cc5 , 0x2c22 , 0x3c03 , 0x0c60 , 0x1c41 ,
+      /*104:*/ 0xedae , 0xfd8f , 0xcdec , 0xddcd , 0xad2a , 0xbd0b , 0x8d68 , 0x9d49 ,
+      /*112:*/ 0x7e97 , 0x6eb6 , 0x5ed5 , 0x4ef4 , 0x3e13 , 0x2e32 , 0x1e51 , 0x0e70 ,
+      /*120:*/ 0xff9f , 0xefbe , 0xdfdd , 0xcffc , 0xbf1b , 0xaf3a , 0x9f59 , 0x8f78 ,
+      /*128:*/ 0x9188 , 0x81a9 , 0xb1ca , 0xa1eb , 0xd10c , 0xc12d , 0xf14e , 0xe16f ,
+      /*136:*/ 0x1080 , 0x00a1 , 0x30c2 , 0x20e3 , 0x5004 , 0x4025 , 0x7046 , 0x6067 ,
+      /*144:*/ 0x83b9 , 0x9398 , 0xa3fb , 0xb3da , 0xc33d , 0xd31c , 0xe37f , 0xf35e ,
+      /*152:*/ 0x02b1 , 0x1290 , 0x22f3 , 0x32d2 , 0x4235 , 0x5214 , 0x6277 , 0x7256 ,
+      /*160:*/ 0xb5ea , 0xa5cb , 0x95a8 , 0x8589 , 0xf56e , 0xe54f , 0xd52c , 0xc50d ,
+      /*168:*/ 0x34e2 , 0x24c3 , 0x14a0 , 0x0481 , 0x7466 , 0x6447 , 0x5424 , 0x4405 ,
+      /*176:*/ 0xa7db , 0xb7fa , 0x8799 , 0x97b8 , 0xe75f , 0xf77e , 0xc71d , 0xd73c ,
+      /*184:*/ 0x26d3 , 0x36f2 , 0x0691 , 0x16b0 , 0x6657 , 0x7676 , 0x4615 , 0x5634 ,
+      /*192:*/ 0xd94c , 0xc96d , 0xf90e , 0xe92f , 0x99c8 , 0x89e9 , 0xb98a , 0xa9ab ,
+      /*200:*/ 0x5844 , 0x4865 , 0x7806 , 0x6827 , 0x18c0 , 0x08e1 , 0x3882 , 0x28a3 ,
+      /*208:*/ 0xcb7d , 0xdb5c , 0xeb3f , 0xfb1e , 0x8bf9 , 0x9bd8 , 0xabbb , 0xbb9a ,
+      /*216:*/ 0x4a75 , 0x5a54 , 0x6a37 , 0x7a16 , 0x0af1 , 0x1ad0 , 0x2ab3 , 0x3a92 ,
+      /*224:*/ 0xfd2e , 0xed0f , 0xdd6c , 0xcd4d , 0xbdaa , 0xad8b , 0x9de8 , 0x8dc9 ,
+      /*232:*/ 0x7c26 , 0x6c07 , 0x5c64 , 0x4c45 , 0x3ca2 , 0x2c83 , 0x1ce0 , 0x0cc1 ,
+      /*240:*/ 0xef1f , 0xff3e , 0xcf5d , 0xdf7c , 0xaf9b , 0xbfba , 0x8fd9 , 0x9ff8 ,
+      /*248:*/ 0x6e17 , 0x7e36 , 0x4e55 , 0x5e74 , 0x2e93 , 0x3eb2 , 0x0ed1 , 0x1ef0
+  };
+ 
+  int CRC_8_H1D_Tbl[256] =
+  {
+      /*  0:*/ 0x00, 0x1d, 0x3a, 0x27, 0x74, 0x69, 0x4e, 0x53,
+      /*  8:*/ 0xe8, 0xf5, 0xd2, 0xcf, 0x9c, 0x81, 0xa6, 0xbb,
+      /* 16:*/ 0xcd, 0xd0, 0xf7, 0xea, 0xb9, 0xa4, 0x83, 0x9e,
+      /* 24:*/ 0x25, 0x38, 0x1f, 0x02, 0x51, 0x4c, 0x6b, 0x76,
+      /* 32:*/ 0x87, 0x9a, 0xbd, 0xa0, 0xf3, 0xee, 0xc9, 0xd4,
+      /* 40:*/ 0x6f, 0x72, 0x55, 0x48, 0x1b, 0x06, 0x21, 0x3c,
+      /* 48:*/ 0x4a, 0x57, 0x70, 0x6d, 0x3e, 0x23, 0x04, 0x19,
+      /* 56:*/ 0xa2, 0xbf, 0x98, 0x85, 0xd6, 0xcb, 0xec, 0xf1,
+      /* 64:*/ 0x13, 0x0e, 0x29, 0x34, 0x67, 0x7a, 0x5d, 0x40,
+      /* 72:*/ 0xfb, 0xe6, 0xc1, 0xdc, 0x8f, 0x92, 0xb5, 0xa8,
+      /* 80:*/ 0xde, 0xc3, 0xe4, 0xf9, 0xaa, 0xb7, 0x90, 0x8d,
+      /* 88:*/ 0x36, 0x2b, 0x0c, 0x11, 0x42, 0x5f, 0x78, 0x65,
+      /* 96:*/ 0x94, 0x89, 0xae, 0xb3, 0xe0, 0xfd, 0xda, 0xc7,
+      /*104:*/ 0x7c, 0x61, 0x46, 0x5b, 0x08, 0x15, 0x32, 0x2f,
+      /*112:*/ 0x59, 0x44, 0x63, 0x7e, 0x2d, 0x30, 0x17, 0x0a,
+      /*120:*/ 0xb1, 0xac, 0x8b, 0x96, 0xc5, 0xd8, 0xff, 0xe2,
+      /*128:*/ 0x26, 0x3b, 0x1c, 0x01, 0x52, 0x4f, 0x68, 0x75,
+      /*136:*/ 0xce, 0xd3, 0xf4, 0xe9, 0xba, 0xa7, 0x80, 0x9d,
+      /*144:*/ 0xeb, 0xf6, 0xd1, 0xcc, 0x9f, 0x82, 0xa5, 0xb8,
+      /*152:*/ 0x03, 0x1e, 0x39, 0x24, 0x77, 0x6a, 0x4d, 0x50,
+      /*160:*/ 0xa1, 0xbc, 0x9b, 0x86, 0xd5, 0xc8, 0xef, 0xf2,
+      /*168:*/ 0x49, 0x54, 0x73, 0x6e, 0x3d, 0x20, 0x07, 0x1a,
+      /*176:*/ 0x6c, 0x71, 0x56, 0x4b, 0x18, 0x05, 0x22, 0x3f,
+      /*184:*/ 0x84, 0x99, 0xbe, 0xa3, 0xf0, 0xed, 0xca, 0xd7,
+      /*192:*/ 0x35, 0x28, 0x0f, 0x12, 0x41, 0x5c, 0x7b, 0x66,
+      /*200:*/ 0xdd, 0xc0, 0xe7, 0xfa, 0xa9, 0xb4, 0x93, 0x8e,
+      /*208:*/ 0xf8, 0xe5, 0xc2, 0xdf, 0x8c, 0x91, 0xb6, 0xab,
+      /*216:*/ 0x10, 0x0d, 0x2a, 0x37, 0x64, 0x79, 0x5e, 0x43,
+      /*224:*/ 0xb2, 0xaf, 0x88, 0x95, 0xc6, 0xdb, 0xfc, 0xe1,
+      /*232:*/ 0x5a, 0x47, 0x60, 0x7d, 0x2e, 0x33, 0x14, 0x09,
+      /*240:*/ 0x7f, 0x62, 0x45, 0x58, 0x0b, 0x16, 0x31, 0x2c,
+      /*248:*/ 0x97, 0x8a, 0xad, 0xb0, 0xe3, 0xfe, 0xd9, 0xc4
+  };
+
+}
+// varaiable End
+
+
+ON Start
+{
+	PROJ_Init();
+	PROJ_Sim_PRI_Signals_Init();
+	
+	setTimer (PROJ_SendMSGTimer_FR,  67);
+
+	g_FR_Block_Timer_Stage = 0;
+
+	g_FR_Line_Block_Counter = 0;
+	g_FR_Object_Block_Counter = 0;
+}
+
+PROJ_Init ()
+{
+
+	//----------------GEN: Set Timer Start-------------------
+	{
+		setTimer (PROJ_SendMSGTimer_20ms,  10);
+		setTimer (PROJ_SendMSGTimer_50ms,  10);
+	}
+	//----------------GEN: Set Timer End-------------------
+
+}
+
+//----------------GEN: On Timer Start-------------------
+
+on key HOME
+{
+
+	//Calc and send MSG
+	{
+		PROJ_CalcMsg_RFC_DOPTraj();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_DOPTraj, RFC_DOPTraj);
+
+		PROJ_CalcMsg_RFC_TIPLBoundary();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_TIPLBoundary, RFC_TIPLBoundary);
+
+	}
+}
+on timer PROJ_SendMSGTimer_20ms
+{
+	//reset Timer
+	setTimer(PROJ_SendMSGTimer_20ms, 20);
+
+	//Calc and send MSG
+	{
+		PROJ_CalcMsg_RFC_Fct();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_Fct, RFC_Fct);
+
+	}
+}
+on timer PROJ_SendMSGTimer_50ms
+{
+	//reset Timer
+	setTimer(PROJ_SendMSGTimer_50ms, 50);
+
+	//Calc and send MSG
+	{
+		PROJ_CalcMsg_RFC_ACCObjInfo0();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_ACCObjInfo0, RFC_ACCObjInfo0);
+
+		PROJ_CalcMsg_RFC_OnComingObj0();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_OnComingObj0, RFC_OnComingObj0);
+
+		PROJ_CalcMsg_RFC_OnComingObj1();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_OnComingObj1, RFC_OnComingObj1);
+
+		PROJ_CalcMsg_RFC_OnGoingObj0();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_OnGoingObj0, RFC_OnGoingObj0);
+
+		PROJ_CalcMsg_RFC_OnGoingObj1();
+		SendMSG_PRI(MSG_CONFIG_TX_RFC_OnGoingObj1, RFC_OnGoingObj1);
+
+	}
+}
+
+//----------------GEN: On Timer End-------------------
+
+on timer PROJ_SendMSGTimer_FR
+{
+	//reset Timer
+    switch (g_FR_Block_Timer_Stage)
+    {
+        case 0:
+            setTimer(PROJ_SendMSGTimer_FR, 5);
+            {
+                //Process
+//                PROJ_ProcessLinesBlock();
+                PROJ_ProcessObjectsBlock();
+                
+            }
+            break;
+        case 1:
+            setTimer(PROJ_SendMSGTimer_FR, 5);
+            {
+ 
+              PROJ_CalcMsg_RFC_ACCObjInfo0();
+          		SendMSG_mpc(MSG_CONFIG_TX_RFC_ACCObjInfo0, RFC_ACCObjInfo0);
+//          		PROJ_CalcMsg_RFC_ACCObjInfo1();
+//          		SendMSG_mpc(MSG_CONFIG_TX_RFC_ACCObjInfo1, RFC_ACCObjInfo1);
+      				PROJ_CalcMsg_RFC_DOPTraj();
+      				SendMSG_mpc(MSG_CONFIG_TX_RFC_DOPTraj, RFC_DOPTraj);
+              PROJ_CalcMsg_RFC_OnComingObj0();
+          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnComingObj0, RFC_OnComingObj0);
+              
+              
+              
+              
+            }
+            break;
+        case 2:
+            setTimer(PROJ_SendMSGTimer_FR, 5);
+            {
+              
+              PROJ_CalcMsg_RFC_OnComingObj1();
+          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnComingObj1, RFC_OnComingObj1);
+				
+
+                  
+            }
+            break;
+        case 3:
+            setTimer(PROJ_SendMSGTimer_FR, 5);
+            {
+              PROJ_CalcMsg_RFC_OnGoingObj0();
+          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnGoingObj0, RFC_OnGoingObj0);
+              
+              PROJ_CalcMsg_RFC_OnGoingObj1();
+          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnGoingObj1, RFC_OnGoingObj1);
+              
+//              PROJ_CalcMsg_RFC_OnGoingObj2();
+//          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnGoingObj2, RFC_OnGoingObj2);
+//              
+//              PROJ_CalcMsg_RFC_OnGoingObj3();
+//          		SendMSG_mpc(MSG_CONFIG_TX_RFC_OnGoingObj3, RFC_OnGoingObj3);
+              PROJ_CalcMsg_RFC_TIPLBoundary();
+              SendMSG_mpc(MSG_CONFIG_TX_RFC_TIPLBoundary, RFC_TIPLBoundary);
+              
+              
+            }
+            break;
+
+        case 4:
+            setTimer(PROJ_SendMSGTimer_FR, 15);
+            break;
+        default :
+            break;
+            
+    }
+	
+    g_FR_Block_Timer_Stage ++;
+    if (g_FR_Block_Timer_Stage > 4)
+    {
+        g_FR_Block_Timer_Stage = 0;
+    }
+  
+}
+
+
+
+
+//PROJ_Sim_Blockcounter_Line(int MSGIndex, message* MSG)
+//{
+//    MSG.byte(1) = ((MSG.byte(1)& 0x0F) | (g_FR_Line_Block_Counter % 16)); 
+//}
+
+PROJ_Sim_Blockcounter_Object(int MSGIndex, message* MSG)
+{
+  if ((MSGIndex == MSG_CONFIG_TX_RFC_DOPTraj)||(MSGIndex == MSG_CONFIG_TX_RFC_TIPLBoundary))
+  {
+
+    MSG.byte(3) =((MSG.byte(3)& 0xF0) | ((g_FR_Object_Block_Counter % 16)));
+
+  }
+  else
+  {
+
+    MSG.byte(1) =((MSG.byte(1)& 0x0F) | ((g_FR_Object_Block_Counter % 16)<<4));
+
+  }
+
+    
+
+}
+
+//PROJ_ProcessLinesBlock()
+//{
+//    //PROJ_Sim_Blockcounter_Line(MSG_CONFIG_TX_RFC_ACCObjInfo, RFC_ACCObjInfo);
+//
+//    
+//    g_FR_Line_Block_Counter ++;
+//}
+
+PROJ_ProcessObjectsBlock()
+{
+    PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_ACCObjInfo0, RFC_ACCObjInfo0);
+	  PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_OnComingObj0, RFC_OnComingObj0);
+	  PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_OnComingObj1, RFC_OnComingObj1);
+	  PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_OnGoingObj0, RFC_OnGoingObj0);
+	  PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_OnGoingObj1, RFC_OnGoingObj1);
+    PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_DOPTraj, RFC_DOPTraj);
+    PROJ_Sim_Blockcounter_Object(MSG_CONFIG_TX_RFC_TIPLBoundary, RFC_TIPLBoundary);
+
+    
+    g_FR_Object_Block_Counter ++;
+  //write("Block %d", (g_FR_Object_Block_Counter%16));
+}
+
+
+SendMSG_PRI(int MSGIndex, message* MSG)
+{
+		PROJ_Sim_Timeout(MSGIndex, MSG);
+}
+PROJ_Sim_Timeout(int MSGIndex, message* MSG)
+                {
+                    /* Timeout */
+                    if (@Error_panel_PRI::i_TOError[MSGIndex] != 0)
+                    {
+                        if (@Error_panel_PRI::i_TOErrorCounter[MSGIndex] > 0)
+                        {
+                            @Error_panel_PRI::i_TOErrorCounter[MSGIndex] --;
+                        }
+
+                        if (@Error_panel_PRI::i_TOErrorCounter[MSGIndex] == 0)
+                        {
+                            @Error_panel_PRI::i_TOError[MSGIndex] = 0;
+                            @Error_panel_PRI::i_TOErrorCounter[MSGIndex] = -1;
+                        }
+                    
+                    }
+                    else
+                    {
+                        output(MSG);
+                    }
+                }
+
+PROJ_Sim_PRI_Signals_Init ()
+{
+    /* RFC_ACCObjInfo0 */
+    {
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ax=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_AxStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ay=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_AyStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dx=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_DxStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dy=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_DyStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_EDynProp=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_ExistProb=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_ID=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_MirProb=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_ObsProb=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_RCS=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_RFF=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Type=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_UiLifeCycles=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_UpdateFlag=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_ValidFlag=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vx=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_VxStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vy=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_VyStd=0;
+		RFC_ACCObjInfo0.RFC_ACCObjInfo0_Width=0;
+	}
+
+
+	/* RFC_DOPTraj */
+	{
+		RFC_DOPTraj.RFC_DOPObjInfo_Handle_ub=0;
+		RFC_DOPTraj.RFC_DOPObjInfo_dxv_sw=0;
+		RFC_DOPTraj.RFC_DOPObjInfo_dyv_sw=0;
+		RFC_DOPTraj.RFC_DOPObjInfo_timestamp=0;
+		RFC_DOPTraj.RFC_DOPObjInfo_vxv_sw=0;
+		RFC_DOPTraj.RFC_DOPTrajValid=0;
+		RFC_DOPTraj.RFC_DOPTraj_CurvChange=0;
+		RFC_DOPTraj.RFC_DOPTraj_Curvature=0;
+		RFC_DOPTraj.RFC_DOPTraj_DxEnd=0;
+		RFC_DOPTraj.RFC_DOPTraj_DxStart=0;
+		RFC_DOPTraj.RFC_DOPTraj_Dy=0;
+		RFC_DOPTraj.RFC_DOPTraj_HeadingAngle=0;
+	}
+
+
+	/* RFC_Fct */
+	{
+		RFC_Fct.RFC_ACCSts=0;
+		RFC_Fct.RFC_AEBSts=0;
+		RFC_Fct.RFC_AngReqActive_ESS=0;
+		RFC_Fct.RFC_AngReq_ESS=0;
+		RFC_Fct.RFC_ESSSts=0;
+		RFC_Fct.RFC_Pri_ALOD_ControlType=0;
+		RFC_Fct.RFC_SCF_MFS_Set=0;
+		RFC_Fct.RFC_Stat_ACCSwitchButton=0;
+		RFC_Fct.RFC_Stat_Error=0;
+		RFC_Fct.RFC_ToqReqActive_ESS=0;
+		RFC_Fct.RFC_ToqReq_ESS=0;
+	}
+
+
+	/* RFC_OnComingObj0 */
+	{
+		RFC_OnComingObj0.RFC_OnComingObj0_Ax=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_AxStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Ay=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_AyStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Dx=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_DxStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Dy=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_DyStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_EDynProp=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_ExistProb=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_ID=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_MirProb=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_ObsProb=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_RCS=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_RFF=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Type=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_UiLifeCycles=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_UpdateFlag=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_ValidFlag=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Vx=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_VxStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Vy=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_VyStd=0;
+		RFC_OnComingObj0.RFC_OnComingObj0_Width=0;
+	}
+
+
+	/* RFC_OnComingObj1 */
+	{
+		RFC_OnComingObj1.RFC_OnComingObj1_Ax=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_AxStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Ay=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_AyStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Dx=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_DxStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Dy=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_DyStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_EDynProp=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_ExistProb=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_ID=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_MirProb=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_ObsProb=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_RCS=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_RFF=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Type=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_UiLifeCycles=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_UpdateFlag=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_ValidFlag=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Vx=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_VxStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Vy=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_VyStd=0;
+		RFC_OnComingObj1.RFC_OnComingObj1_Width=0;
+	}
+
+
+	/* RFC_OnGoingObj0 */
+	{
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Ax=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_AxStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Ay=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_AyStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Dx=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_DxStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Dy=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_DyStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_EDynProp=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_ExistProb=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_ID=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_MirProb=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_ObsProb=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_RCS=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_RFF=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Type=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_UiLifeCycles=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_UpdateFlag=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_ValidFlag=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Vx=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_VxStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Vy=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_VyStd=0;
+		RFC_OnGoingObj0.RFC_OnGoingObj0_Width=0;
+	}
+
+
+	/* RFC_OnGoingObj1 */
+	{
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Ax=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_AxStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Ay=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_AyStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Dx=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_DxStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Dy=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_DyStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_EDynProp=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_ExistProb=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_ID=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_MirProb=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_ObsProb=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_RCS=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_RFF=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Type=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_UiLifeCycles=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_UpdateFlag=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_ValidFlag=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Vx=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_VxStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Vy=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_VyStd=0;
+		RFC_OnGoingObj1.RFC_OnGoingObj1_Width=0;
+	}
+
+
+	/* RFC_TIPLBoundary */
+	{
+		RFC_TIPLBoundary.RFC_BoundaryLe_CurvChange=0;
+		RFC_TIPLBoundary.RFC_BoundaryLe_Curvature=0;
+		RFC_TIPLBoundary.RFC_BoundaryLe_DxEnd=0;
+		RFC_TIPLBoundary.RFC_BoundaryLe_DxStart=0;
+		RFC_TIPLBoundary.RFC_BoundaryLe_Dy=0;
+		RFC_TIPLBoundary.RFC_BoundaryLe_HeadingAngle=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_CurvChange=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_Curvature=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_DxEnd=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_DxStart=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_Dy=0;
+		RFC_TIPLBoundary.RFC_BoundaryRi_HeadingAngle=0;
+		RFC_TIPLBoundary.RFC_TIPLBoundary_Type=0;
+		RFC_TIPLBoundary.RFC_TIPLBoundary_Valid=0;
+	}
+}
+
+
+PROJ_Sim_Rollingcounter(int MSGIndex, message* MSG)
+{
+   if ((MSGIndex == MSG_CONFIG_TX_RFC_DOPTraj)
+		||(MSGIndex == MSG_CONFIG_TX_RFC_Fct)
+	    ||(MSGIndex == MSG_CONFIG_TX_RFC_TIPLBoundary))
+	
+	{	
+		byte t_LastCounter;
+		t_LastCounter = MSG.byte(2);   
+		
+
+		/* Rolling Counter */
+		if ( (@Error_panel_mpc::i_TOError[MSGIndex] == 0)
+			&& (@Error_panel_mpc::i_CRC_CHKError[MSGIndex] == 0)
+			&& (@Error_panel_mpc::i_MCError[MSGIndex]))
+		{
+			if (@Error_panel_mpc::i_MCErrorCounter[MSGIndex] > 0)
+			{
+				@Error_panel_mpc::i_MCErrorCounter[MSGIndex] --;
+			}
+			
+			//write("##RollingCounter_Error_Sim: : @CAN ID:0x%x @ReferNo.%d", MSG.id, @Error_panel_mpc::i_MCErrorCounter[MSGIndex]);
+			
+			if (@Error_panel_mpc::i_MCErrorCounter[MSGIndex] ==0)
+			{
+				@Error_panel_mpc::i_MCError[MSGIndex] = 0;
+				@Error_panel_mpc::i_MCErrorCounter[MSGIndex] = -1;
+			}
+		}
+		else
+		{
+			t_LastCounter = (t_LastCounter +1) % 256;
+		}
+		
+		MSG.byte(2) = t_LastCounter & 0xFF; 
+	}
+	else
+    {
+        byte t_LastCounter;
+        byte t_rc_index;
+        t_rc_index = 1;
+        t_LastCounter = (MSG.byte(t_rc_index) & 0x0F); 
+        
+        /* Rolling Counter */
+        if ( (@Error_panel_mpc::i_TOError[MSGIndex] == 0)
+            && (@Error_panel_mpc::i_CRC_CHKError[MSGIndex] == 0)
+            && (@Error_panel_mpc::i_MCError[MSGIndex]))
+        {
+            if (@Error_panel_mpc::i_MCErrorCounter[MSGIndex] > 0)
+            {
+                @Error_panel_mpc::i_MCErrorCounter[MSGIndex] --;
+            }
+            
+            
+            if (@Error_panel_mpc::i_MCErrorCounter[MSGIndex] ==0)
+            {
+                @Error_panel_mpc::i_MCError[MSGIndex] = 0;
+                @Error_panel_mpc::i_MCErrorCounter[MSGIndex] = -1;
+            }
+        }
+        else
+        {
+            t_LastCounter = (t_LastCounter +1) % 15;
+        }
+
+        MSG.byte(t_rc_index) = ((MSG.byte(t_rc_index) & 0xF0) | t_LastCounter); 
+    }
+}
+
+
+/* http://www.sunshine2k.de/coding/javascript/crc/crc_js.html  POLYNOMIAL:0x1021 Init:0xFFFF XOR:0x0*/
+word Crc_CalculateCRC16_new(byte ptr[], byte p_length)
+{
+    byte    index;
+    word    crcTemp;
+
+    crcTemp = 0xFFFF;
+
+    for (index = 0; index < p_length; ++index)
+    {
+
+        crcTemp ^= ((word)ptr[index]) << 8;
+        crcTemp = (crcTemp << 8) ^ CRC_16_H1021_Tbl[(crcTemp >> 8) & (0xFF)];
+    }
+
+    return (crcTemp);
+}
+
+PROJ_Sim_Checksum(int MSGIndex, message* MSG)
+{
+
+	word t_CRC_value;
+	if ((MSGIndex == MSG_CONFIG_TX_RFC_DOPTraj)
+		||(MSGIndex == MSG_CONFIG_TX_RFC_Fct)
+	    ||(MSGIndex == MSG_CONFIG_TX_RFC_TIPLBoundary))
+		
+	{
+	
+		word data_id_t;
+		byte data_id[2];
+		byte data_temp[64];
+		byte index_t;
+		byte t_length;
+		word t_CRC_value;   
+		
+		t_length = MSG.DataLength;
+		
+		data_id_t = 4096 + MSG.id;
+		
+		
+		
+		
+		
+		for (index_t=0;index_t<(t_length-2);index_t++)
+		{
+			data_temp[index_t]= MSG.byte( index_t+2);
+			
+		}
+		
+		data_temp[t_length -2] = data_id_t;
+		data_temp[t_length-1] = data_id_t>>8;
+		
+		
+		t_CRC_value = Crc_CalculateCRC16_new(data_temp, t_length);
+
+		
+		if((@Error_panel_mpc::i_TOError[MSGIndex] ==0)
+		&&(@Error_panel_mpc::i_CRC_CHKError[MSGIndex]))
+		{
+			if (@Error_panel_mpc::i_CHKErrorCounter[MSGIndex] > 0)
+			{
+			  @Error_panel_mpc::i_CHKErrorCounter[MSGIndex] --;
+			}
+
+			if (@Error_panel_mpc::i_CHKErrorCounter[MSGIndex] == 0)
+			{
+			  @Error_panel_mpc::i_CRC_CHKError[MSGIndex] = 0;
+			  @Error_panel_mpc::i_CHKErrorCounter[MSGIndex] = -1;
+			}
+
+			t_CRC_value = t_CRC_value +1;
+		}
+		else
+		{
+			//Do nothing 
+		}
+
+		
+		MSG.byte(1) = t_CRC_value >>8;
+		MSG.byte(0) = t_CRC_value;
+	}
+	else
+    {
+
+      t_CRC_value = PROJ_CHK_SAE_J1850_0x1D(MSG, MSG.DataLength);
+
+      
+      if((@Error_panel_mpc::i_TOError[MSGIndex] ==0)
+          &&(@Error_panel_mpc::i_CRC_CHKError[MSGIndex]))
+      {
+          if (@Error_panel_mpc::i_CHKErrorCounter[MSGIndex] > 0)
+          {
+            @Error_panel_mpc::i_CHKErrorCounter[MSGIndex] --;
+          }
+
+          if (@Error_panel_mpc::i_CHKErrorCounter[MSGIndex] == 0)
+          {
+            @Error_panel_mpc::i_CRC_CHKError[MSGIndex] = 0;
+            @Error_panel_mpc::i_CHKErrorCounter[MSGIndex] = -1;
+          }
+
+          t_CRC_value = t_CRC_value +1;
+      }
+      else
+      {
+          //Do nothing 
+      }
+      MSG.byte(0) = t_CRC_value;
+    }
+}
+
+
+//--------------------------------------------------
+byte PROJ_CHK_SAE_J1850_0x1D (message *data, byte p_length)
+{
+  byte t_RetCrc;
+  byte t_CRC_temp;
+  byte t_index;
+  
+  t_CRC_temp = 0xFF;
+  for (t_index = 0; t_index < p_length-1; ++t_index)
+  {
+//    if(t_index == 7)
+//    {
+//      continue;
+//    }
+    t_CRC_temp ^= data.byte(t_index+1);
+    t_CRC_temp = CRC_8_H1D_Tbl[t_CRC_temp];
+    
+  }
+  t_CRC_temp ^= 0xFF;
+  
+  t_RetCrc = t_CRC_temp;
+  
+  return t_RetCrc;
+}
+//--------------------------------------------------
+
+//--------------------------------------------------
+
+
+//--------------------------------------------------
+
+PROJ_CalcMsg_RFC_ACCObjInfo0()
+{
+	/* RFC_ACCObjInfo0_Ax */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Ax_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Ax_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ax = @MPC3::i_RFC_ACCObjInfo0_Ax_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ax.phys = @MPC3::i_RFC_ACCObjInfo0_Ax;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_AxStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_AxStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_AxStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_AxStd = @MPC3::i_RFC_ACCObjInfo0_AxStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_AxStd.phys = @MPC3::i_RFC_ACCObjInfo0_AxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Ay */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Ay_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Ay_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ay = @MPC3::i_RFC_ACCObjInfo0_Ay_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Ay.phys = @MPC3::i_RFC_ACCObjInfo0_Ay;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_AyStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_AyStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_AyStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_AyStd = @MPC3::i_RFC_ACCObjInfo0_AyStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_AyStd.phys = @MPC3::i_RFC_ACCObjInfo0_AyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Dx */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Dx_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Dx_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dx = @MPC3::i_RFC_ACCObjInfo0_Dx_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dx.phys = @MPC3::i_RFC_ACCObjInfo0_Dx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_DxStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_DxStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_DxStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_DxStd = @MPC3::i_RFC_ACCObjInfo0_DxStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_DxStd.phys = @MPC3::i_RFC_ACCObjInfo0_DxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Dy */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Dy_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dy = @MPC3::i_RFC_ACCObjInfo0_Dy_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Dy.phys = @MPC3::i_RFC_ACCObjInfo0_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_DyStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_DyStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_DyStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_DyStd = @MPC3::i_RFC_ACCObjInfo0_DyStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_DyStd.phys = @MPC3::i_RFC_ACCObjInfo0_DyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_EDynProp */
+    if(!@MPC3::i_RFC_ACCObjInfo0_EDynProp_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_EDynProp_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_EDynProp = @MPC3::i_RFC_ACCObjInfo0_EDynProp_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_EDynProp.phys = @MPC3::i_RFC_ACCObjInfo0_EDynProp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_ExistProb */
+    if(!@MPC3::i_RFC_ACCObjInfo0_ExistProb_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_ExistProb_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ExistProb = @MPC3::i_RFC_ACCObjInfo0_ExistProb_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ExistProb.phys = @MPC3::i_RFC_ACCObjInfo0_ExistProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_ID */
+    if(!@MPC3::i_RFC_ACCObjInfo0_ID_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_ID_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ID = @MPC3::i_RFC_ACCObjInfo0_ID_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ID.phys = @MPC3::i_RFC_ACCObjInfo0_ID;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_MirProb */
+    if(!@MPC3::i_RFC_ACCObjInfo0_MirProb_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_MirProb_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_MirProb = @MPC3::i_RFC_ACCObjInfo0_MirProb_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_MirProb.phys = @MPC3::i_RFC_ACCObjInfo0_MirProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_ObsProb */
+    if(!@MPC3::i_RFC_ACCObjInfo0_ObsProb_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_ObsProb_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ObsProb = @MPC3::i_RFC_ACCObjInfo0_ObsProb_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ObsProb.phys = @MPC3::i_RFC_ACCObjInfo0_ObsProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_RCS */
+    if(!@MPC3::i_RFC_ACCObjInfo0_RCS_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_RCS_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_RCS = @MPC3::i_RFC_ACCObjInfo0_RCS_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_RCS.phys = @MPC3::i_RFC_ACCObjInfo0_RCS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_RFF */
+    if(!@MPC3::i_RFC_ACCObjInfo0_RFF_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_RFF_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_RFF = @MPC3::i_RFC_ACCObjInfo0_RFF_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_RFF.phys = @MPC3::i_RFC_ACCObjInfo0_RFF;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Type */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Type_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Type_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Type = @MPC3::i_RFC_ACCObjInfo0_Type_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Type.phys = @MPC3::i_RFC_ACCObjInfo0_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_UiLifeCycles */
+    if(!@MPC3::i_RFC_ACCObjInfo0_UiLifeCycles_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_UiLifeCycles_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_UiLifeCycles = @MPC3::i_RFC_ACCObjInfo0_UiLifeCycles_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_UiLifeCycles.phys = @MPC3::i_RFC_ACCObjInfo0_UiLifeCycles;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_UpdateFlag */
+    if(!@MPC3::i_RFC_ACCObjInfo0_UpdateFlag_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_UpdateFlag_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_UpdateFlag = @MPC3::i_RFC_ACCObjInfo0_UpdateFlag_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_UpdateFlag.phys = @MPC3::i_RFC_ACCObjInfo0_UpdateFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_ValidFlag */
+    if(!@MPC3::i_RFC_ACCObjInfo0_ValidFlag_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_ValidFlag_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ValidFlag = @MPC3::i_RFC_ACCObjInfo0_ValidFlag_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_ValidFlag.phys = @MPC3::i_RFC_ACCObjInfo0_ValidFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Vx */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Vx_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Vx_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vx = @MPC3::i_RFC_ACCObjInfo0_Vx_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vx.phys = @MPC3::i_RFC_ACCObjInfo0_Vx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_VxStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_VxStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_VxStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_VxStd = @MPC3::i_RFC_ACCObjInfo0_VxStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_VxStd.phys = @MPC3::i_RFC_ACCObjInfo0_VxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Vy */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Vy_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Vy_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vy = @MPC3::i_RFC_ACCObjInfo0_Vy_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Vy.phys = @MPC3::i_RFC_ACCObjInfo0_Vy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_VyStd */
+    if(!@MPC3::i_RFC_ACCObjInfo0_VyStd_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_VyStd_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_VyStd = @MPC3::i_RFC_ACCObjInfo0_VyStd_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_VyStd.phys = @MPC3::i_RFC_ACCObjInfo0_VyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ACCObjInfo0_Width */
+    if(!@MPC3::i_RFC_ACCObjInfo0_Width_SIM)
+    {
+        if(@MPC3::i_RFC_ACCObjInfo0_Width_EN)
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Width = @MPC3::i_RFC_ACCObjInfo0_Width_Raw;
+        }
+        else
+        {
+            RFC_ACCObjInfo0.RFC_ACCObjInfo0_Width.phys = @MPC3::i_RFC_ACCObjInfo0_Width;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_ACCObjInfo0, RFC_ACCObjInfo0);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_ACCObjInfo0, RFC_ACCObjInfo0);
+
+    /* DLC Check */
+    RFC_ACCObjInfo0.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_ACCObjInfo0]?1:DBLookup(RFC_ACCObjInfo0).dlc;
+}
+
+PROJ_CalcMsg_RFC_DOPTraj()
+{
+    /* RFC_DOPObjInfo_Handle_ub */
+    if(!@MPC3::i_RFC_DOPObjInfo_Handle_ub_SIM)
+    {
+        if(@MPC3::i_RFC_DOPObjInfo_Handle_ub_EN)
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_Handle_ub = @MPC3::i_RFC_DOPObjInfo_Handle_ub_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_Handle_ub.phys = @MPC3::i_RFC_DOPObjInfo_Handle_ub;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPObjInfo_dxv_sw */
+    if(!@MPC3::i_RFC_DOPObjInfo_dxv_sw_SIM)
+    {
+        if(@MPC3::i_RFC_DOPObjInfo_dxv_sw_EN)
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_dxv_sw = @MPC3::i_RFC_DOPObjInfo_dxv_sw_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_dxv_sw.phys = @MPC3::i_RFC_DOPObjInfo_dxv_sw;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPObjInfo_dyv_sw */
+    if(!@MPC3::i_RFC_DOPObjInfo_dyv_sw_SIM)
+    {
+        if(@MPC3::i_RFC_DOPObjInfo_dyv_sw_EN)
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_dyv_sw = @MPC3::i_RFC_DOPObjInfo_dyv_sw_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_dyv_sw.phys = @MPC3::i_RFC_DOPObjInfo_dyv_sw;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPObjInfo_timestamp */
+    if(!@MPC3::i_RFC_DOPObjInfo_timestamp_SIM)
+    {
+        if(@MPC3::i_RFC_DOPObjInfo_timestamp_EN)
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_timestamp = @MPC3::i_RFC_DOPObjInfo_timestamp_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_timestamp.phys = @MPC3::i_RFC_DOPObjInfo_timestamp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPObjInfo_vxv_sw */
+    if(!@MPC3::i_RFC_DOPObjInfo_vxv_sw_SIM)
+    {
+        if(@MPC3::i_RFC_DOPObjInfo_vxv_sw_EN)
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_vxv_sw = @MPC3::i_RFC_DOPObjInfo_vxv_sw_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPObjInfo_vxv_sw.phys = @MPC3::i_RFC_DOPObjInfo_vxv_sw;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTrajValid */
+    if(!@MPC3::i_RFC_DOPTrajValid_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTrajValid_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTrajValid = @MPC3::i_RFC_DOPTrajValid_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTrajValid.phys = @MPC3::i_RFC_DOPTrajValid;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_CurvChange */
+    if(!@MPC3::i_RFC_DOPTraj_CurvChange_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_CurvChange_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_CurvChange = @MPC3::i_RFC_DOPTraj_CurvChange_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_CurvChange.phys = @MPC3::i_RFC_DOPTraj_CurvChange;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_Curvature */
+    if(!@MPC3::i_RFC_DOPTraj_Curvature_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_Curvature_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_Curvature = @MPC3::i_RFC_DOPTraj_Curvature_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_Curvature.phys = @MPC3::i_RFC_DOPTraj_Curvature;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_DxEnd */
+    if(!@MPC3::i_RFC_DOPTraj_DxEnd_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_DxEnd_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_DxEnd = @MPC3::i_RFC_DOPTraj_DxEnd_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_DxEnd.phys = @MPC3::i_RFC_DOPTraj_DxEnd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_DxStart */
+    if(!@MPC3::i_RFC_DOPTraj_DxStart_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_DxStart_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_DxStart = @MPC3::i_RFC_DOPTraj_DxStart_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_DxStart.phys = @MPC3::i_RFC_DOPTraj_DxStart;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_Dy */
+    if(!@MPC3::i_RFC_DOPTraj_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_Dy_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_Dy = @MPC3::i_RFC_DOPTraj_Dy_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_Dy.phys = @MPC3::i_RFC_DOPTraj_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_DOPTraj_HeadingAngle */
+    if(!@MPC3::i_RFC_DOPTraj_HeadingAngle_SIM)
+    {
+        if(@MPC3::i_RFC_DOPTraj_HeadingAngle_EN)
+        {
+            RFC_DOPTraj.RFC_DOPTraj_HeadingAngle = @MPC3::i_RFC_DOPTraj_HeadingAngle_Raw;
+        }
+        else
+        {
+            RFC_DOPTraj.RFC_DOPTraj_HeadingAngle.phys = @MPC3::i_RFC_DOPTraj_HeadingAngle;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_DOPTraj, RFC_DOPTraj);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_DOPTraj, RFC_DOPTraj);
+
+    /* DLC Check */
+    RFC_DOPTraj.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_DOPTraj]?1:DBLookup(RFC_DOPTraj).dlc;
+}
+
+PROJ_CalcMsg_RFC_Fct()
+{
+    /* RFC_ACCSts */
+    if(!@MPC3::i_RFC_ACCSts_SIM)
+    {
+        if(@MPC3::i_RFC_ACCSts_EN)
+        {
+            RFC_Fct.RFC_ACCSts = @MPC3::i_RFC_ACCSts_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_ACCSts.phys = @MPC3::i_RFC_ACCSts;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_AEBSts */
+    if(!@MPC3::i_RFC_AEBSts_SIM)
+    {
+        if(@MPC3::i_RFC_AEBSts_EN)
+        {
+            RFC_Fct.RFC_AEBSts = @MPC3::i_RFC_AEBSts_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_AEBSts.phys = @MPC3::i_RFC_AEBSts;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_AngReqActive_ESS */
+    if(!@MPC3::i_RFC_AngReqActive_ESS_SIM)
+    {
+        if(@MPC3::i_RFC_AngReqActive_ESS_EN)
+        {
+            RFC_Fct.RFC_AngReqActive_ESS = @MPC3::i_RFC_AngReqActive_ESS_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_AngReqActive_ESS.phys = @MPC3::i_RFC_AngReqActive_ESS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_AngReq_ESS */
+    if(!@MPC3::i_RFC_AngReq_ESS_SIM)
+    {
+        if(@MPC3::i_RFC_AngReq_ESS_EN)
+        {
+            RFC_Fct.RFC_AngReq_ESS = @MPC3::i_RFC_AngReq_ESS_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_AngReq_ESS.phys = @MPC3::i_RFC_AngReq_ESS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ESSSts */
+    if(!@MPC3::i_RFC_ESSSts_SIM)
+    {
+        if(@MPC3::i_RFC_ESSSts_EN)
+        {
+            RFC_Fct.RFC_ESSSts = @MPC3::i_RFC_ESSSts_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_ESSSts.phys = @MPC3::i_RFC_ESSSts;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_Pri_ALOD_ControlType */
+    if(!@MPC3::i_RFC_Pri_ALOD_ControlType_SIM)
+    {
+        if(@MPC3::i_RFC_Pri_ALOD_ControlType_EN)
+        {
+            RFC_Fct.RFC_Pri_ALOD_ControlType = @MPC3::i_RFC_Pri_ALOD_ControlType_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_Pri_ALOD_ControlType.phys = @MPC3::i_RFC_Pri_ALOD_ControlType;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_SCF_MFS_Set */
+    if(!@MPC3::i_RFC_SCF_MFS_Set_SIM)
+    {
+        if(@MPC3::i_RFC_SCF_MFS_Set_EN)
+        {
+            RFC_Fct.RFC_SCF_MFS_Set = @MPC3::i_RFC_SCF_MFS_Set_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_SCF_MFS_Set.phys = @MPC3::i_RFC_SCF_MFS_Set;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_Stat_ACCSwitchButton */
+    if(!@MPC3::i_RFC_Stat_ACCSwitchButton_SIM)
+    {
+        if(@MPC3::i_RFC_Stat_ACCSwitchButton_EN)
+        {
+            RFC_Fct.RFC_Stat_ACCSwitchButton = @MPC3::i_RFC_Stat_ACCSwitchButton_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_Stat_ACCSwitchButton.phys = @MPC3::i_RFC_Stat_ACCSwitchButton;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_Stat_Error */
+    if(!@MPC3::i_RFC_Stat_Error_SIM)
+    {
+        if(@MPC3::i_RFC_Stat_Error_EN)
+        {
+            RFC_Fct.RFC_Stat_Error = @MPC3::i_RFC_Stat_Error_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_Stat_Error.phys = @MPC3::i_RFC_Stat_Error;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ToqReqActive_ESS */
+    if(!@MPC3::i_RFC_ToqReqActive_ESS_SIM)
+    {
+        if(@MPC3::i_RFC_ToqReqActive_ESS_EN)
+        {
+            RFC_Fct.RFC_ToqReqActive_ESS = @MPC3::i_RFC_ToqReqActive_ESS_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_ToqReqActive_ESS.phys = @MPC3::i_RFC_ToqReqActive_ESS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_ToqReq_ESS */
+    if(!@MPC3::i_RFC_ToqReq_ESS_SIM)
+    {
+        if(@MPC3::i_RFC_ToqReq_ESS_EN)
+        {
+            RFC_Fct.RFC_ToqReq_ESS = @MPC3::i_RFC_ToqReq_ESS_Raw;
+        }
+        else
+        {
+            RFC_Fct.RFC_ToqReq_ESS.phys = @MPC3::i_RFC_ToqReq_ESS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_Fct, RFC_Fct);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_Fct, RFC_Fct);
+
+    /* DLC Check */
+    RFC_Fct.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_Fct]?1:DBLookup(RFC_Fct).dlc;
+}
+
+PROJ_CalcMsg_RFC_OnComingObj0()
+{
+    /* RFC_OnComingObj0_Ax */
+    if(!@MPC3::i_RFC_OnComingObj0_Ax_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Ax_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Ax = @MPC3::i_RFC_OnComingObj0_Ax_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Ax.phys = @MPC3::i_RFC_OnComingObj0_Ax;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_AxStd */
+    if(!@MPC3::i_RFC_OnComingObj0_AxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_AxStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_AxStd = @MPC3::i_RFC_OnComingObj0_AxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_AxStd.phys = @MPC3::i_RFC_OnComingObj0_AxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Ay */
+    if(!@MPC3::i_RFC_OnComingObj0_Ay_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Ay_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Ay = @MPC3::i_RFC_OnComingObj0_Ay_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Ay.phys = @MPC3::i_RFC_OnComingObj0_Ay;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_AyStd */
+    if(!@MPC3::i_RFC_OnComingObj0_AyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_AyStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_AyStd = @MPC3::i_RFC_OnComingObj0_AyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_AyStd.phys = @MPC3::i_RFC_OnComingObj0_AyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Dx */
+    if(!@MPC3::i_RFC_OnComingObj0_Dx_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Dx_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Dx = @MPC3::i_RFC_OnComingObj0_Dx_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Dx.phys = @MPC3::i_RFC_OnComingObj0_Dx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_DxStd */
+    if(!@MPC3::i_RFC_OnComingObj0_DxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_DxStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_DxStd = @MPC3::i_RFC_OnComingObj0_DxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_DxStd.phys = @MPC3::i_RFC_OnComingObj0_DxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Dy */
+    if(!@MPC3::i_RFC_OnComingObj0_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Dy_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Dy = @MPC3::i_RFC_OnComingObj0_Dy_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Dy.phys = @MPC3::i_RFC_OnComingObj0_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_DyStd */
+    if(!@MPC3::i_RFC_OnComingObj0_DyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_DyStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_DyStd = @MPC3::i_RFC_OnComingObj0_DyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_DyStd.phys = @MPC3::i_RFC_OnComingObj0_DyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_EDynProp */
+    if(!@MPC3::i_RFC_OnComingObj0_EDynProp_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_EDynProp_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_EDynProp = @MPC3::i_RFC_OnComingObj0_EDynProp_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_EDynProp.phys = @MPC3::i_RFC_OnComingObj0_EDynProp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_ExistProb */
+    if(!@MPC3::i_RFC_OnComingObj0_ExistProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_ExistProb_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ExistProb = @MPC3::i_RFC_OnComingObj0_ExistProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ExistProb.phys = @MPC3::i_RFC_OnComingObj0_ExistProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_ID */
+    if(!@MPC3::i_RFC_OnComingObj0_ID_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_ID_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ID = @MPC3::i_RFC_OnComingObj0_ID_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ID.phys = @MPC3::i_RFC_OnComingObj0_ID;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_MirProb */
+    if(!@MPC3::i_RFC_OnComingObj0_MirProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_MirProb_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_MirProb = @MPC3::i_RFC_OnComingObj0_MirProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_MirProb.phys = @MPC3::i_RFC_OnComingObj0_MirProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_ObsProb */
+    if(!@MPC3::i_RFC_OnComingObj0_ObsProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_ObsProb_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ObsProb = @MPC3::i_RFC_OnComingObj0_ObsProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ObsProb.phys = @MPC3::i_RFC_OnComingObj0_ObsProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_RCS */
+    if(!@MPC3::i_RFC_OnComingObj0_RCS_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_RCS_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_RCS = @MPC3::i_RFC_OnComingObj0_RCS_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_RCS.phys = @MPC3::i_RFC_OnComingObj0_RCS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_RFF */
+    if(!@MPC3::i_RFC_OnComingObj0_RFF_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_RFF_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_RFF = @MPC3::i_RFC_OnComingObj0_RFF_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_RFF.phys = @MPC3::i_RFC_OnComingObj0_RFF;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Type */
+    if(!@MPC3::i_RFC_OnComingObj0_Type_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Type_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Type = @MPC3::i_RFC_OnComingObj0_Type_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Type.phys = @MPC3::i_RFC_OnComingObj0_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_UiLifeCycles */
+    if(!@MPC3::i_RFC_OnComingObj0_UiLifeCycles_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_UiLifeCycles_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_UiLifeCycles = @MPC3::i_RFC_OnComingObj0_UiLifeCycles_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_UiLifeCycles.phys = @MPC3::i_RFC_OnComingObj0_UiLifeCycles;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_UpdateFlag */
+    if(!@MPC3::i_RFC_OnComingObj0_UpdateFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_UpdateFlag_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_UpdateFlag = @MPC3::i_RFC_OnComingObj0_UpdateFlag_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_UpdateFlag.phys = @MPC3::i_RFC_OnComingObj0_UpdateFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_ValidFlag */
+    if(!@MPC3::i_RFC_OnComingObj0_ValidFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_ValidFlag_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ValidFlag = @MPC3::i_RFC_OnComingObj0_ValidFlag_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_ValidFlag.phys = @MPC3::i_RFC_OnComingObj0_ValidFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Vx */
+    if(!@MPC3::i_RFC_OnComingObj0_Vx_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Vx_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Vx = @MPC3::i_RFC_OnComingObj0_Vx_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Vx.phys = @MPC3::i_RFC_OnComingObj0_Vx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_VxStd */
+    if(!@MPC3::i_RFC_OnComingObj0_VxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_VxStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_VxStd = @MPC3::i_RFC_OnComingObj0_VxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_VxStd.phys = @MPC3::i_RFC_OnComingObj0_VxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Vy */
+    if(!@MPC3::i_RFC_OnComingObj0_Vy_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Vy_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Vy = @MPC3::i_RFC_OnComingObj0_Vy_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Vy.phys = @MPC3::i_RFC_OnComingObj0_Vy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_VyStd */
+    if(!@MPC3::i_RFC_OnComingObj0_VyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_VyStd_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_VyStd = @MPC3::i_RFC_OnComingObj0_VyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_VyStd.phys = @MPC3::i_RFC_OnComingObj0_VyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj0_Width */
+    if(!@MPC3::i_RFC_OnComingObj0_Width_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj0_Width_EN)
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Width = @MPC3::i_RFC_OnComingObj0_Width_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj0.RFC_OnComingObj0_Width.phys = @MPC3::i_RFC_OnComingObj0_Width;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_OnComingObj0, RFC_OnComingObj0);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_OnComingObj0, RFC_OnComingObj0);
+
+    /* DLC Check */
+    RFC_OnComingObj0.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_OnComingObj0]?1:DBLookup(RFC_OnComingObj0).dlc;
+}
+
+PROJ_CalcMsg_RFC_OnComingObj1()
+{
+    /* RFC_OnComingObj1_Ax */
+    if(!@MPC3::i_RFC_OnComingObj1_Ax_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Ax_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Ax = @MPC3::i_RFC_OnComingObj1_Ax_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Ax.phys = @MPC3::i_RFC_OnComingObj1_Ax;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_AxStd */
+    if(!@MPC3::i_RFC_OnComingObj1_AxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_AxStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_AxStd = @MPC3::i_RFC_OnComingObj1_AxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_AxStd.phys = @MPC3::i_RFC_OnComingObj1_AxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Ay */
+    if(!@MPC3::i_RFC_OnComingObj1_Ay_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Ay_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Ay = @MPC3::i_RFC_OnComingObj1_Ay_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Ay.phys = @MPC3::i_RFC_OnComingObj1_Ay;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_AyStd */
+    if(!@MPC3::i_RFC_OnComingObj1_AyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_AyStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_AyStd = @MPC3::i_RFC_OnComingObj1_AyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_AyStd.phys = @MPC3::i_RFC_OnComingObj1_AyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Dx */
+    if(!@MPC3::i_RFC_OnComingObj1_Dx_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Dx_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Dx = @MPC3::i_RFC_OnComingObj1_Dx_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Dx.phys = @MPC3::i_RFC_OnComingObj1_Dx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_DxStd */
+    if(!@MPC3::i_RFC_OnComingObj1_DxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_DxStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_DxStd = @MPC3::i_RFC_OnComingObj1_DxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_DxStd.phys = @MPC3::i_RFC_OnComingObj1_DxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Dy */
+    if(!@MPC3::i_RFC_OnComingObj1_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Dy_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Dy = @MPC3::i_RFC_OnComingObj1_Dy_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Dy.phys = @MPC3::i_RFC_OnComingObj1_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_DyStd */
+    if(!@MPC3::i_RFC_OnComingObj1_DyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_DyStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_DyStd = @MPC3::i_RFC_OnComingObj1_DyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_DyStd.phys = @MPC3::i_RFC_OnComingObj1_DyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_EDynProp */
+    if(!@MPC3::i_RFC_OnComingObj1_EDynProp_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_EDynProp_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_EDynProp = @MPC3::i_RFC_OnComingObj1_EDynProp_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_EDynProp.phys = @MPC3::i_RFC_OnComingObj1_EDynProp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_ExistProb */
+    if(!@MPC3::i_RFC_OnComingObj1_ExistProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_ExistProb_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ExistProb = @MPC3::i_RFC_OnComingObj1_ExistProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ExistProb.phys = @MPC3::i_RFC_OnComingObj1_ExistProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_ID */
+    if(!@MPC3::i_RFC_OnComingObj1_ID_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_ID_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ID = @MPC3::i_RFC_OnComingObj1_ID_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ID.phys = @MPC3::i_RFC_OnComingObj1_ID;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_MirProb */
+    if(!@MPC3::i_RFC_OnComingObj1_MirProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_MirProb_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_MirProb = @MPC3::i_RFC_OnComingObj1_MirProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_MirProb.phys = @MPC3::i_RFC_OnComingObj1_MirProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_ObsProb */
+    if(!@MPC3::i_RFC_OnComingObj1_ObsProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_ObsProb_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ObsProb = @MPC3::i_RFC_OnComingObj1_ObsProb_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ObsProb.phys = @MPC3::i_RFC_OnComingObj1_ObsProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_RCS */
+    if(!@MPC3::i_RFC_OnComingObj1_RCS_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_RCS_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_RCS = @MPC3::i_RFC_OnComingObj1_RCS_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_RCS.phys = @MPC3::i_RFC_OnComingObj1_RCS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_RFF */
+    if(!@MPC3::i_RFC_OnComingObj1_RFF_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_RFF_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_RFF = @MPC3::i_RFC_OnComingObj1_RFF_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_RFF.phys = @MPC3::i_RFC_OnComingObj1_RFF;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Type */
+    if(!@MPC3::i_RFC_OnComingObj1_Type_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Type_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Type = @MPC3::i_RFC_OnComingObj1_Type_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Type.phys = @MPC3::i_RFC_OnComingObj1_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_UiLifeCycles */
+    if(!@MPC3::i_RFC_OnComingObj1_UiLifeCycles_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_UiLifeCycles_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_UiLifeCycles = @MPC3::i_RFC_OnComingObj1_UiLifeCycles_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_UiLifeCycles.phys = @MPC3::i_RFC_OnComingObj1_UiLifeCycles;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_UpdateFlag */
+    if(!@MPC3::i_RFC_OnComingObj1_UpdateFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_UpdateFlag_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_UpdateFlag = @MPC3::i_RFC_OnComingObj1_UpdateFlag_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_UpdateFlag.phys = @MPC3::i_RFC_OnComingObj1_UpdateFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_ValidFlag */
+    if(!@MPC3::i_RFC_OnComingObj1_ValidFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_ValidFlag_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ValidFlag = @MPC3::i_RFC_OnComingObj1_ValidFlag_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_ValidFlag.phys = @MPC3::i_RFC_OnComingObj1_ValidFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Vx */
+    if(!@MPC3::i_RFC_OnComingObj1_Vx_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Vx_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Vx = @MPC3::i_RFC_OnComingObj1_Vx_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Vx.phys = @MPC3::i_RFC_OnComingObj1_Vx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_VxStd */
+    if(!@MPC3::i_RFC_OnComingObj1_VxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_VxStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_VxStd = @MPC3::i_RFC_OnComingObj1_VxStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_VxStd.phys = @MPC3::i_RFC_OnComingObj1_VxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Vy */
+    if(!@MPC3::i_RFC_OnComingObj1_Vy_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Vy_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Vy = @MPC3::i_RFC_OnComingObj1_Vy_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Vy.phys = @MPC3::i_RFC_OnComingObj1_Vy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_VyStd */
+    if(!@MPC3::i_RFC_OnComingObj1_VyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_VyStd_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_VyStd = @MPC3::i_RFC_OnComingObj1_VyStd_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_VyStd.phys = @MPC3::i_RFC_OnComingObj1_VyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnComingObj1_Width */
+    if(!@MPC3::i_RFC_OnComingObj1_Width_SIM)
+    {
+        if(@MPC3::i_RFC_OnComingObj1_Width_EN)
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Width = @MPC3::i_RFC_OnComingObj1_Width_Raw;
+        }
+        else
+        {
+            RFC_OnComingObj1.RFC_OnComingObj1_Width.phys = @MPC3::i_RFC_OnComingObj1_Width;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_OnComingObj1, RFC_OnComingObj1);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_OnComingObj1, RFC_OnComingObj1);
+
+    /* DLC Check */
+    RFC_OnComingObj1.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_OnComingObj1]?1:DBLookup(RFC_OnComingObj1).dlc;
+}
+
+PROJ_CalcMsg_RFC_OnGoingObj0()
+{
+    /* RFC_OnGoingObj0_Ax */
+    if(!@MPC3::i_RFC_OnGoingObj0_Ax_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Ax_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Ax = @MPC3::i_RFC_OnGoingObj0_Ax_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Ax.phys = @MPC3::i_RFC_OnGoingObj0_Ax;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_AxStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_AxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_AxStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_AxStd = @MPC3::i_RFC_OnGoingObj0_AxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_AxStd.phys = @MPC3::i_RFC_OnGoingObj0_AxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Ay */
+    if(!@MPC3::i_RFC_OnGoingObj0_Ay_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Ay_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Ay = @MPC3::i_RFC_OnGoingObj0_Ay_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Ay.phys = @MPC3::i_RFC_OnGoingObj0_Ay;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_AyStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_AyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_AyStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_AyStd = @MPC3::i_RFC_OnGoingObj0_AyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_AyStd.phys = @MPC3::i_RFC_OnGoingObj0_AyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Dx */
+    if(!@MPC3::i_RFC_OnGoingObj0_Dx_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Dx_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Dx = @MPC3::i_RFC_OnGoingObj0_Dx_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Dx.phys = @MPC3::i_RFC_OnGoingObj0_Dx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_DxStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_DxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_DxStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_DxStd = @MPC3::i_RFC_OnGoingObj0_DxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_DxStd.phys = @MPC3::i_RFC_OnGoingObj0_DxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Dy */
+    if(!@MPC3::i_RFC_OnGoingObj0_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Dy_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Dy = @MPC3::i_RFC_OnGoingObj0_Dy_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Dy.phys = @MPC3::i_RFC_OnGoingObj0_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_DyStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_DyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_DyStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_DyStd = @MPC3::i_RFC_OnGoingObj0_DyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_DyStd.phys = @MPC3::i_RFC_OnGoingObj0_DyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_EDynProp */
+    if(!@MPC3::i_RFC_OnGoingObj0_EDynProp_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_EDynProp_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_EDynProp = @MPC3::i_RFC_OnGoingObj0_EDynProp_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_EDynProp.phys = @MPC3::i_RFC_OnGoingObj0_EDynProp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_ExistProb */
+    if(!@MPC3::i_RFC_OnGoingObj0_ExistProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_ExistProb_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ExistProb = @MPC3::i_RFC_OnGoingObj0_ExistProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ExistProb.phys = @MPC3::i_RFC_OnGoingObj0_ExistProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_ID */
+    if(!@MPC3::i_RFC_OnGoingObj0_ID_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_ID_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ID = @MPC3::i_RFC_OnGoingObj0_ID_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ID.phys = @MPC3::i_RFC_OnGoingObj0_ID;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_MirProb */
+    if(!@MPC3::i_RFC_OnGoingObj0_MirProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_MirProb_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_MirProb = @MPC3::i_RFC_OnGoingObj0_MirProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_MirProb.phys = @MPC3::i_RFC_OnGoingObj0_MirProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_ObsProb */
+    if(!@MPC3::i_RFC_OnGoingObj0_ObsProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_ObsProb_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ObsProb = @MPC3::i_RFC_OnGoingObj0_ObsProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ObsProb.phys = @MPC3::i_RFC_OnGoingObj0_ObsProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_RCS */
+    if(!@MPC3::i_RFC_OnGoingObj0_RCS_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_RCS_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_RCS = @MPC3::i_RFC_OnGoingObj0_RCS_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_RCS.phys = @MPC3::i_RFC_OnGoingObj0_RCS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_RFF */
+    if(!@MPC3::i_RFC_OnGoingObj0_RFF_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_RFF_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_RFF = @MPC3::i_RFC_OnGoingObj0_RFF_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_RFF.phys = @MPC3::i_RFC_OnGoingObj0_RFF;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Type */
+    if(!@MPC3::i_RFC_OnGoingObj0_Type_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Type_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Type = @MPC3::i_RFC_OnGoingObj0_Type_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Type.phys = @MPC3::i_RFC_OnGoingObj0_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_UiLifeCycles */
+    if(!@MPC3::i_RFC_OnGoingObj0_UiLifeCycles_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_UiLifeCycles_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_UiLifeCycles = @MPC3::i_RFC_OnGoingObj0_UiLifeCycles_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_UiLifeCycles.phys = @MPC3::i_RFC_OnGoingObj0_UiLifeCycles;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_UpdateFlag */
+    if(!@MPC3::i_RFC_OnGoingObj0_UpdateFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_UpdateFlag_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_UpdateFlag = @MPC3::i_RFC_OnGoingObj0_UpdateFlag_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_UpdateFlag.phys = @MPC3::i_RFC_OnGoingObj0_UpdateFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_ValidFlag */
+    if(!@MPC3::i_RFC_OnGoingObj0_ValidFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_ValidFlag_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ValidFlag = @MPC3::i_RFC_OnGoingObj0_ValidFlag_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_ValidFlag.phys = @MPC3::i_RFC_OnGoingObj0_ValidFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Vx */
+    if(!@MPC3::i_RFC_OnGoingObj0_Vx_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Vx_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Vx = @MPC3::i_RFC_OnGoingObj0_Vx_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Vx.phys = @MPC3::i_RFC_OnGoingObj0_Vx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_VxStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_VxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_VxStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_VxStd = @MPC3::i_RFC_OnGoingObj0_VxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_VxStd.phys = @MPC3::i_RFC_OnGoingObj0_VxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Vy */
+    if(!@MPC3::i_RFC_OnGoingObj0_Vy_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Vy_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Vy = @MPC3::i_RFC_OnGoingObj0_Vy_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Vy.phys = @MPC3::i_RFC_OnGoingObj0_Vy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_VyStd */
+    if(!@MPC3::i_RFC_OnGoingObj0_VyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_VyStd_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_VyStd = @MPC3::i_RFC_OnGoingObj0_VyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_VyStd.phys = @MPC3::i_RFC_OnGoingObj0_VyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj0_Width */
+    if(!@MPC3::i_RFC_OnGoingObj0_Width_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj0_Width_EN)
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Width = @MPC3::i_RFC_OnGoingObj0_Width_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj0.RFC_OnGoingObj0_Width.phys = @MPC3::i_RFC_OnGoingObj0_Width;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_OnGoingObj0, RFC_OnGoingObj0);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_OnGoingObj0, RFC_OnGoingObj0);
+
+    /* DLC Check */
+    RFC_OnGoingObj0.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_OnGoingObj0]?1:DBLookup(RFC_OnGoingObj0).dlc;
+}
+
+PROJ_CalcMsg_RFC_OnGoingObj1()
+{
+    /* RFC_OnGoingObj1_Ax */
+    if(!@MPC3::i_RFC_OnGoingObj1_Ax_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Ax_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Ax = @MPC3::i_RFC_OnGoingObj1_Ax_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Ax.phys = @MPC3::i_RFC_OnGoingObj1_Ax;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_AxStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_AxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_AxStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_AxStd = @MPC3::i_RFC_OnGoingObj1_AxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_AxStd.phys = @MPC3::i_RFC_OnGoingObj1_AxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Ay */
+    if(!@MPC3::i_RFC_OnGoingObj1_Ay_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Ay_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Ay = @MPC3::i_RFC_OnGoingObj1_Ay_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Ay.phys = @MPC3::i_RFC_OnGoingObj1_Ay;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_AyStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_AyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_AyStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_AyStd = @MPC3::i_RFC_OnGoingObj1_AyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_AyStd.phys = @MPC3::i_RFC_OnGoingObj1_AyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Dx */
+    if(!@MPC3::i_RFC_OnGoingObj1_Dx_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Dx_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Dx = @MPC3::i_RFC_OnGoingObj1_Dx_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Dx.phys = @MPC3::i_RFC_OnGoingObj1_Dx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_DxStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_DxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_DxStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_DxStd = @MPC3::i_RFC_OnGoingObj1_DxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_DxStd.phys = @MPC3::i_RFC_OnGoingObj1_DxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Dy */
+    if(!@MPC3::i_RFC_OnGoingObj1_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Dy_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Dy = @MPC3::i_RFC_OnGoingObj1_Dy_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Dy.phys = @MPC3::i_RFC_OnGoingObj1_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_DyStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_DyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_DyStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_DyStd = @MPC3::i_RFC_OnGoingObj1_DyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_DyStd.phys = @MPC3::i_RFC_OnGoingObj1_DyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_EDynProp */
+    if(!@MPC3::i_RFC_OnGoingObj1_EDynProp_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_EDynProp_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_EDynProp = @MPC3::i_RFC_OnGoingObj1_EDynProp_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_EDynProp.phys = @MPC3::i_RFC_OnGoingObj1_EDynProp;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_ExistProb */
+    if(!@MPC3::i_RFC_OnGoingObj1_ExistProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_ExistProb_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ExistProb = @MPC3::i_RFC_OnGoingObj1_ExistProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ExistProb.phys = @MPC3::i_RFC_OnGoingObj1_ExistProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_ID */
+    if(!@MPC3::i_RFC_OnGoingObj1_ID_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_ID_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ID = @MPC3::i_RFC_OnGoingObj1_ID_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ID.phys = @MPC3::i_RFC_OnGoingObj1_ID;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_MirProb */
+    if(!@MPC3::i_RFC_OnGoingObj1_MirProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_MirProb_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_MirProb = @MPC3::i_RFC_OnGoingObj1_MirProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_MirProb.phys = @MPC3::i_RFC_OnGoingObj1_MirProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_ObsProb */
+    if(!@MPC3::i_RFC_OnGoingObj1_ObsProb_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_ObsProb_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ObsProb = @MPC3::i_RFC_OnGoingObj1_ObsProb_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ObsProb.phys = @MPC3::i_RFC_OnGoingObj1_ObsProb;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_RCS */
+    if(!@MPC3::i_RFC_OnGoingObj1_RCS_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_RCS_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_RCS = @MPC3::i_RFC_OnGoingObj1_RCS_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_RCS.phys = @MPC3::i_RFC_OnGoingObj1_RCS;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_RFF */
+    if(!@MPC3::i_RFC_OnGoingObj1_RFF_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_RFF_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_RFF = @MPC3::i_RFC_OnGoingObj1_RFF_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_RFF.phys = @MPC3::i_RFC_OnGoingObj1_RFF;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Type */
+    if(!@MPC3::i_RFC_OnGoingObj1_Type_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Type_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Type = @MPC3::i_RFC_OnGoingObj1_Type_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Type.phys = @MPC3::i_RFC_OnGoingObj1_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_UiLifeCycles */
+    if(!@MPC3::i_RFC_OnGoingObj1_UiLifeCycles_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_UiLifeCycles_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_UiLifeCycles = @MPC3::i_RFC_OnGoingObj1_UiLifeCycles_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_UiLifeCycles.phys = @MPC3::i_RFC_OnGoingObj1_UiLifeCycles;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_UpdateFlag */
+    if(!@MPC3::i_RFC_OnGoingObj1_UpdateFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_UpdateFlag_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_UpdateFlag = @MPC3::i_RFC_OnGoingObj1_UpdateFlag_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_UpdateFlag.phys = @MPC3::i_RFC_OnGoingObj1_UpdateFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_ValidFlag */
+    if(!@MPC3::i_RFC_OnGoingObj1_ValidFlag_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_ValidFlag_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ValidFlag = @MPC3::i_RFC_OnGoingObj1_ValidFlag_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_ValidFlag.phys = @MPC3::i_RFC_OnGoingObj1_ValidFlag;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Vx */
+    if(!@MPC3::i_RFC_OnGoingObj1_Vx_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Vx_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Vx = @MPC3::i_RFC_OnGoingObj1_Vx_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Vx.phys = @MPC3::i_RFC_OnGoingObj1_Vx;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_VxStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_VxStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_VxStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_VxStd = @MPC3::i_RFC_OnGoingObj1_VxStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_VxStd.phys = @MPC3::i_RFC_OnGoingObj1_VxStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Vy */
+    if(!@MPC3::i_RFC_OnGoingObj1_Vy_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Vy_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Vy = @MPC3::i_RFC_OnGoingObj1_Vy_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Vy.phys = @MPC3::i_RFC_OnGoingObj1_Vy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_VyStd */
+    if(!@MPC3::i_RFC_OnGoingObj1_VyStd_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_VyStd_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_VyStd = @MPC3::i_RFC_OnGoingObj1_VyStd_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_VyStd.phys = @MPC3::i_RFC_OnGoingObj1_VyStd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_OnGoingObj1_Width */
+    if(!@MPC3::i_RFC_OnGoingObj1_Width_SIM)
+    {
+        if(@MPC3::i_RFC_OnGoingObj1_Width_EN)
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Width = @MPC3::i_RFC_OnGoingObj1_Width_Raw;
+        }
+        else
+        {
+            RFC_OnGoingObj1.RFC_OnGoingObj1_Width.phys = @MPC3::i_RFC_OnGoingObj1_Width;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_OnGoingObj1, RFC_OnGoingObj1);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_OnGoingObj1, RFC_OnGoingObj1);
+
+    /* DLC Check */
+    RFC_OnGoingObj1.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_OnGoingObj1]?1:DBLookup(RFC_OnGoingObj1).dlc;
+}
+
+PROJ_CalcMsg_RFC_TIPLBoundary()
+{
+    /* RFC_BoundaryLe_CurvChange */
+    if(!@MPC3::i_RFC_BoundaryLe_CurvChange_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_CurvChange_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_CurvChange = @MPC3::i_RFC_BoundaryLe_CurvChange_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_CurvChange.phys = @MPC3::i_RFC_BoundaryLe_CurvChange;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryLe_Curvature */
+    if(!@MPC3::i_RFC_BoundaryLe_Curvature_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_Curvature_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_Curvature = @MPC3::i_RFC_BoundaryLe_Curvature_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_Curvature.phys = @MPC3::i_RFC_BoundaryLe_Curvature;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryLe_DxEnd */
+    if(!@MPC3::i_RFC_BoundaryLe_DxEnd_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_DxEnd_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_DxEnd = @MPC3::i_RFC_BoundaryLe_DxEnd_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_DxEnd.phys = @MPC3::i_RFC_BoundaryLe_DxEnd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryLe_DxStart */
+    if(!@MPC3::i_RFC_BoundaryLe_DxStart_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_DxStart_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_DxStart = @MPC3::i_RFC_BoundaryLe_DxStart_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_DxStart.phys = @MPC3::i_RFC_BoundaryLe_DxStart;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryLe_Dy */
+    if(!@MPC3::i_RFC_BoundaryLe_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_Dy_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_Dy = @MPC3::i_RFC_BoundaryLe_Dy_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_Dy.phys = @MPC3::i_RFC_BoundaryLe_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryLe_HeadingAngle */
+    if(!@MPC3::i_RFC_BoundaryLe_HeadingAngle_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryLe_HeadingAngle_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_HeadingAngle = @MPC3::i_RFC_BoundaryLe_HeadingAngle_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryLe_HeadingAngle.phys = @MPC3::i_RFC_BoundaryLe_HeadingAngle;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_CurvChange */
+    if(!@MPC3::i_RFC_BoundaryRi_CurvChange_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_CurvChange_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_CurvChange = @MPC3::i_RFC_BoundaryRi_CurvChange_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_CurvChange.phys = @MPC3::i_RFC_BoundaryRi_CurvChange;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_Curvature */
+    if(!@MPC3::i_RFC_BoundaryRi_Curvature_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_Curvature_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_Curvature = @MPC3::i_RFC_BoundaryRi_Curvature_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_Curvature.phys = @MPC3::i_RFC_BoundaryRi_Curvature;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_DxEnd */
+    if(!@MPC3::i_RFC_BoundaryRi_DxEnd_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_DxEnd_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_DxEnd = @MPC3::i_RFC_BoundaryRi_DxEnd_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_DxEnd.phys = @MPC3::i_RFC_BoundaryRi_DxEnd;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_DxStart */
+    if(!@MPC3::i_RFC_BoundaryRi_DxStart_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_DxStart_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_DxStart = @MPC3::i_RFC_BoundaryRi_DxStart_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_DxStart.phys = @MPC3::i_RFC_BoundaryRi_DxStart;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_Dy */
+    if(!@MPC3::i_RFC_BoundaryRi_Dy_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_Dy_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_Dy = @MPC3::i_RFC_BoundaryRi_Dy_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_Dy.phys = @MPC3::i_RFC_BoundaryRi_Dy;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_BoundaryRi_HeadingAngle */
+    if(!@MPC3::i_RFC_BoundaryRi_HeadingAngle_SIM)
+    {
+        if(@MPC3::i_RFC_BoundaryRi_HeadingAngle_EN)
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_HeadingAngle = @MPC3::i_RFC_BoundaryRi_HeadingAngle_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_BoundaryRi_HeadingAngle.phys = @MPC3::i_RFC_BoundaryRi_HeadingAngle;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_TIPLBoundary_Type */
+    if(!@MPC3::i_RFC_TIPLBoundary_Type_SIM)
+    {
+        if(@MPC3::i_RFC_TIPLBoundary_Type_EN)
+        {
+            RFC_TIPLBoundary.RFC_TIPLBoundary_Type = @MPC3::i_RFC_TIPLBoundary_Type_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_TIPLBoundary_Type.phys = @MPC3::i_RFC_TIPLBoundary_Type;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* RFC_TIPLBoundary_Valid */
+    if(!@MPC3::i_RFC_TIPLBoundary_Valid_SIM)
+    {
+        if(@MPC3::i_RFC_TIPLBoundary_Valid_EN)
+        {
+            RFC_TIPLBoundary.RFC_TIPLBoundary_Valid = @MPC3::i_RFC_TIPLBoundary_Valid_Raw;
+        }
+        else
+        {
+            RFC_TIPLBoundary.RFC_TIPLBoundary_Valid.phys = @MPC3::i_RFC_TIPLBoundary_Valid;
+        }
+    }
+    else
+    {
+        // To be completed in simulation
+    }
+    /* Rolling counter */
+    PROJ_Sim_Rollingcounter(MSG_CONFIG_TX_RFC_TIPLBoundary, RFC_TIPLBoundary);
+
+    /* CheckSum */
+    PROJ_Sim_Checksum(MSG_CONFIG_TX_RFC_TIPLBoundary, RFC_TIPLBoundary);
+
+    /* DLC Check */
+    RFC_TIPLBoundary.DataLength = @Error_panel_PRI::i_DLCError[MSG_CONFIG_TX_RFC_TIPLBoundary]?1:DBLookup(RFC_TIPLBoundary).dlc;
+
+}
+
+on message CAN1.*
+{
+    output(this);
+}
+
+on message CAN2.*
+{
+    output(this);
+}
